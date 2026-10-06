@@ -110,9 +110,9 @@
         <div class="mt-4 pt-3 border-t border-[#d4dce5] text-[10px] text-neutral-500 leading-tight">
           <p class="font-semibold text-neutral-700 mb-1">Status:</p>
           <div class="w-full bg-[#dce2e8] h-2.5 rounded-sm overflow-hidden border border-[#b8c2cc] mb-1">
-            <div id="lmsProgress" class="bg-emerald-500 h-full w-[65%] transition-all duration-300"></div>
+            <div id="lmsProgress" class="bg-emerald-500 h-full w-[30%] transition-all duration-300"></div>
           </div>
-          <span id="lmsStatusText">Progress: Step 1 of 2 (Playing video1.mp4)</span>
+          <span id="lmsStatusText">Progress: Step 1 of 3</span>
         </div>
       </div>
 
@@ -136,7 +136,7 @@
             <div class="text-amber-400 text-3xl mb-2">⚠</div>
             <h2 class="text-base font-bold uppercase tracking-wide mb-1">Mandatory Interactive Module</h2>
             <p class="text-xs text-neutral-300 mb-4 leading-relaxed">
-              This module contains sequential media (<code class="text-amber-300">trainer_50_50.mp4</code>, <code class="text-amber-300">trainer_50_50_2.mp4</code> &amp; <code class="text-amber-300">trainer_50_50_3.mp4</code>). Complete the scenario and pass the mandatory 2-option question.
+              Complete the video scenario and answer the mandatory compliance assessment question.
             </p>
             <button onclick="startPlayback()" class="bevel-btn font-bold text-neutral-800 text-xs px-5 py-2.5 rounded uppercase tracking-wider">
               Launch Scenario Audio &amp; Video &rarr;
@@ -225,11 +225,8 @@
         <span id="timecode" class="text-[11px] font-mono text-neutral-700 ml-2">00:00 / 00:00</span>
       </div>
 
-      <!-- File indicator / track status -->
+      <!-- Slide navigation -->
       <div class="flex items-center gap-2">
-        <span id="activeTrackBadge" class="bg-white border border-[#adb9c7] px-2 py-0.5 rounded text-[10px] font-mono text-neutral-600">
-          Source: trainer_50_50.mp4
-        </span>
         <button class="bevel-btn px-2.5 py-1 text-[11px] text-neutral-400 rounded cursor-not-allowed" disabled>
           &lt; Previous
         </button>
@@ -254,7 +251,6 @@
     const lmsPlayBtn = document.getElementById('lmsPlayBtn');
     const lmsProgress = document.getElementById('lmsProgress');
     const lmsStatusText = document.getElementById('lmsStatusText');
-    const activeTrackBadge = document.getElementById('activeTrackBadge');
     const labelOptA = document.getElementById('labelOptA');
     const labelOptB = document.getElementById('labelOptB');
 
@@ -296,16 +292,13 @@
 
       if (index === 0) {
         lmsProgress.style.width = "30%";
-        lmsStatusText.textContent = "Progress: Step 1 of 3 (Playing " + playlist[0] + ")";
-        activeTrackBadge.textContent = "Source: " + playlist[0];
+        lmsStatusText.textContent = "Progress: Step 1 of 3";
       } else if (index === 1) {
         lmsProgress.style.width = "65%";
-        lmsStatusText.textContent = "Progress: Step 2 of 3 (Playing " + playlist[1] + ")";
-        activeTrackBadge.textContent = "Source: " + playlist[1];
+        lmsStatusText.textContent = "Progress: Step 2 of 3";
       } else if (index === 2) {
         lmsProgress.style.width = "95%";
-        lmsStatusText.textContent = "Progress: Step 3 of 3 (Playing " + playlist[2] + ")";
-        activeTrackBadge.textContent = "Source: " + playlist[2];
+        lmsStatusText.textContent = "Progress: Step 3 of 3";
       }
     }
 
