@@ -126,7 +126,7 @@
           playsinline
           preload="auto"
         >
-          <source id="videoSource" src="video1.mp4" type="video/mp4" />
+          <source id="videoSource" src="trainer_50_50.mp4" type="video/mp4" />
           Your browser does not support HTML5 video playback.
         </video>
 
@@ -136,7 +136,7 @@
             <div class="text-amber-400 text-3xl mb-2">⚠</div>
             <h2 class="text-base font-bold uppercase tracking-wide mb-1">Mandatory Interactive Module</h2>
             <p class="text-xs text-neutral-300 mb-4 leading-relaxed">
-              This module contains sequential media (<code class="text-amber-300">video1.mp4</code>, <code class="text-amber-300">video2.mp4</code> &amp; <code class="text-amber-300">video3.mp4</code>). Complete the scenario and pass the mandatory 2-option question.
+              This module contains sequential media (<code class="text-amber-300">trainer_50_50.mp4</code>, <code class="text-amber-300">trainer_50_50_2.mp4</code> &amp; <code class="text-amber-300">trainer_50_50_3.mp4</code>). Complete the scenario and pass the mandatory 2-option question.
             </p>
             <button onclick="startPlayback()" class="bevel-btn font-bold text-neutral-800 text-xs px-5 py-2.5 rounded uppercase tracking-wider">
               Launch Scenario Audio &amp; Video &rarr;
@@ -241,7 +241,7 @@
       <!-- File indicator / track status -->
       <div class="flex items-center gap-2">
         <span id="activeTrackBadge" class="bg-white border border-[#adb9c7] px-2 py-0.5 rounded text-[10px] font-mono text-neutral-600">
-          Source: video1.mp4
+          Source: trainer_50_50.mp4
         </span>
         <button class="bevel-btn px-2.5 py-1 text-[11px] text-neutral-400 rounded cursor-not-allowed" disabled>
           &lt; Previous
@@ -271,11 +271,11 @@
     const labelOptA = document.getElementById('labelOptA');
     const labelOptB = document.getElementById('labelOptB');
 
-    // Sequential playlist: video1 -> video2 -> [quiz] -> (Option A) -> video3
+    // Sequential playlist matching the filenames uploaded in your GitHub repo:
     let playlist = [
-      'video1.mp4',
-      'video2.mp4',
-      'video3.mp4'
+      'trainer_50_50.mp4',
+      'trainer_50_50_2.mp4',
+      'trainer_50_50_3.mp4'
     ];
     let currentIndex = 0;
     let selectedChoice = null;
@@ -309,15 +309,15 @@
 
       if (index === 0) {
         lmsProgress.style.width = "30%";
-        lmsStatusText.textContent = "Progress: Step 1 of 3 (Playing video1.mp4)";
+        lmsStatusText.textContent = "Progress: Step 1 of 3 (Playing " + playlist[0] + ")";
         activeTrackBadge.textContent = "Source: " + playlist[0];
       } else if (index === 1) {
         lmsProgress.style.width = "65%";
-        lmsStatusText.textContent = "Progress: Step 2 of 3 (Playing video2.mp4)";
+        lmsStatusText.textContent = "Progress: Step 2 of 3 (Playing " + playlist[1] + ")";
         activeTrackBadge.textContent = "Source: " + playlist[1];
       } else if (index === 2) {
         lmsProgress.style.width = "95%";
-        lmsStatusText.textContent = "Progress: Step 3 of 3 (Playing video3.mp4)";
+        lmsStatusText.textContent = "Progress: Step 3 of 3 (Playing " + playlist[2] + ")";
         activeTrackBadge.textContent = "Source: " + playlist[2];
       }
     }
